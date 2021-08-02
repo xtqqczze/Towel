@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Slazy Caching </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Slazy Caching ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="slazy-caching">Slazy Caching</h1>
+
+<p><a href="https://github.com/ZacharyPatten/Towel" alt="Github Repository"><img alt="github repo" src="https://img.shields.io/badge/github-repo-black?logo=github&amp;style=flat" title="Go To Github Repo" alt="Github Repository"></a></p>
+<p>The source code for all benchmarks are in <a href="https://github.com/ZacharyPatten/Towel/tree/main/Tools/Towel_Benchmarking">Tools/Towel.Benchmarking</a>.</p>
+<pre><code class="lang-ini">
+BenchmarkDotNet=v0.13.0, OS=Windows 10.0.19042.1110 (20H2/October2020Update)
+Intel Core i7-4790K CPU 4.00GHz (Haswell), 1 CPU, 8 logical and 4 physical cores
+.NET SDK=6.0.100-preview.6.21355.2
+  [Host]     : .NET 5.0.8 (5.0.821.31504), X64 RyuJIT
+  DefaultJob : .NET 5.0.8 (5.0.821.31504), X64 RyuJIT
+
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>N</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Error</th>
+<th style="text-align: right;">StdDev</th>
+<th style="text-align: right;">Ratio</th>
+<th style="text-align: right;">RatioSD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lazy</strong></td>
+<td><strong>1</strong></td>
+<td style="text-align: right;"><strong>33.33 ns</strong></td>
+<td style="text-align: right;"><strong>0.691 ns</strong></td>
+<td style="text-align: right;"><strong>1.076 ns</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>0.00</strong></td>
+</tr>
+<tr>
+<td>LazyExecutionAndPublication</td>
+<td>1</td>
+<td style="text-align: right;">32.84 ns</td>
+<td style="text-align: right;">0.662 ns</td>
+<td style="text-align: right;">0.680 ns</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">0.03</td>
+</tr>
+<tr>
+<td>SLazy</td>
+<td>1</td>
+<td style="text-align: right;">25.77 ns</td>
+<td style="text-align: right;">0.264 ns</td>
+<td style="text-align: right;">0.247 ns</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td><strong>Lazy</strong></td>
+<td><strong>10</strong></td>
+<td style="text-align: right;"><strong>38.30 ns</strong></td>
+<td style="text-align: right;"><strong>0.327 ns</strong></td>
+<td style="text-align: right;"><strong>0.306 ns</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>0.00</strong></td>
+</tr>
+<tr>
+<td>LazyExecutionAndPublication</td>
+<td>10</td>
+<td style="text-align: right;">38.25 ns</td>
+<td style="text-align: right;">0.550 ns</td>
+<td style="text-align: right;">0.487 ns</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr>
+<td>SLazy</td>
+<td>10</td>
+<td style="text-align: right;">30.19 ns</td>
+<td style="text-align: right;">0.213 ns</td>
+<td style="text-align: right;">0.188 ns</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td><strong>Lazy</strong></td>
+<td><strong>100</strong></td>
+<td style="text-align: right;"><strong>95.82 ns</strong></td>
+<td style="text-align: right;"><strong>1.104 ns</strong></td>
+<td style="text-align: right;"><strong>1.032 ns</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>0.00</strong></td>
+</tr>
+<tr>
+<td>LazyExecutionAndPublication</td>
+<td>100</td>
+<td style="text-align: right;">96.57 ns</td>
+<td style="text-align: right;">0.873 ns</td>
+<td style="text-align: right;">0.774 ns</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr>
+<td>SLazy</td>
+<td>100</td>
+<td style="text-align: right;">85.34 ns</td>
+<td style="text-align: right;">0.895 ns</td>
+<td style="text-align: right;">0.793 ns</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td><strong>Lazy</strong></td>
+<td><strong>1000</strong></td>
+<td style="text-align: right;"><strong>563.30 ns</strong></td>
+<td style="text-align: right;"><strong>4.441 ns</strong></td>
+<td style="text-align: right;"><strong>4.154 ns</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>0.00</strong></td>
+</tr>
+<tr>
+<td>LazyExecutionAndPublication</td>
+<td>1000</td>
+<td style="text-align: right;">572.02 ns</td>
+<td style="text-align: right;">11.437 ns</td>
+<td style="text-align: right;">15.269 ns</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">0.03</td>
+</tr>
+<tr>
+<td>SLazy</td>
+<td>1000</td>
+<td style="text-align: right;">551.57 ns</td>
+<td style="text-align: right;">3.831 ns</td>
+<td style="text-align: right;">3.583 ns</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">0.01</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/ZacharyPatten/Towel/blob/main/Tools/docfx_project/benchmarks/SLazyCachingBenchmarks.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
